@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Straighten Up</title>
+  <link rel="stylesheet" href="/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!--fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark"
+    style="box-shadow:0 3px 10px black;background-color:#ee7777;">
+    <div class="container">
+      <a class="navbar-brand" style="font-size:30px;color: #2b2e4a" href="#">Straighten Up</a>
+      <button style="border-style:none;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+        </span>
+      </button>
+      <div class="collapse justify-content-end navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="#machine">Machine</a>
+          <a class="nav-link" href="#heights">Heights</a>
+          <a class="nav-link" href="#how">How</a>
+          <a class="nav-link" href="#resources">Resources</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="machine" style="padding-top:150px;margin-bottom:80px;" class="container">
+    <h1 style="color:#fff44f;text-align:center;font-size:80px;">Straighten Up</h1>
+    <div style="margin-top:50px;" class="row">
+      <div class="d-flex align-items-center col-md-6">
+        <div>
+          <h3 style="color:#fff44f">The Best Posture</h3>
+          <p>Assuming that the user is using a computer and sitting at a table...</p>
+          <ul>
+            <li>20+ in between screen and user's eyes</li>
+            <li>Computer is directly in front of the user</li>
+            <li>Center of monitor is 15-20 degrees below horizontal eye level</li>
+          </ul>
+          <h3 style="color:#fff44f">Instructions</h3>
+          <ol>
+            <li>Align your head to be vertically in between the yellow lines.</li>
+            <li>Align your nose and ears to rest horizontally on the dark purple line.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="col-md-6 text-center"
+        style="background-color:#53354a;border-radius:30px;padding-right:20px;padding-left:20px;">
+        <h3 style="text-align:center;margin-top:20px;margin-bottom:20px;color:#fff44f">Teachable Machine Model</h3>
+
+        <button class="tmbtn" type="button" onclick="init();loopstarter();loudsound()">Start</button>
+        <button class="tmbtn" type="button" onclick="loopstopper()">Stop</button>
+        <!--<button id="stopBtn" type="button" onclick="">Stop</button>-->
+        <button class="tmbtn" type="button" onclick="alignshowtoggle()">Align</button>
+        <div class="text-center"
+          style="background-color:#ee7777;height:300px;position:relative;margin-bottom:20px;border-radius:20px;">
+          <canvas style="border-radius:5px;height:200px; width:200px;margin-bottom:0px" id="canvas"></canvas>
+
+          <div class="colorfulBar hidden"
+            style="background-color:#fff44f;height:5px;position:relative;top:-138px;width:200px;transform:translateX(-50%);left:50%;">
+          </div>
+          <div class="colorfulBar hidden"
+            style="background-color:#2b2e4a;height:5px;position:relative;top:-72px;width:200px;transform:translateX(-50%);left:50%;">
+          </div>
+          <div class="colorfulBar hidden"
+            style="background-color:#fff44f;height:5px;position:relative;top:-42px;width:200px;transform:translateX(-50%);left:50%;">
+          </div>
+          <div style="color:#2b2e4a; font-size:20px;height:100px;text-align:center;" id="label-container"></div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  <div style="background-color:#53354a;">
+    <div id="heights" style="padding:100px 0px;color:#ee7777;" class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 style="color:#fff44f;margin-bottom:20px;text-align:center">Reaching New Heights</h1>
+          <p>The term posture is in reference to the position of one’s body in a standing or sitting position. The spine
+            consists of three natural curvatures which when aligned evenly distributes the weight between your feet.
+            Good
+            posture distributes this weight to prevent lopsidedness.</p>
+          <h3 style="color:#fff44f">Benefits</h3>
+          <ol>
+            <li>Prevent stress from building on your spinal chords</li>
+            <li>Decrease back pains and aches</li>
+            <li>Servicable to aging</li>
+            <li>Decrease the likelihood of headaches</li>
+            <li>Improve oxygen flow</li>
+          </ol>
+          <p>As video meetings become more prevalent during this day and age, your virtual image becomes very important.
+            Along
+            with the various health benefits associated with good posture, this website will also assist your image on
+            professional meetings online.
+          </p>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center">
+          <img
+            style="position:relative;left:50%;transform:translateX(-50%);max-width:400px;width:100%;border-radius:20px;"
+            src="posture.png" alt="Posture">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div style="padding:100px 0px" id="how" class="container">
+    <h1 style="color:#fff44f;margin-bottom:20px;"> How We Did It</h1>
+   
+    <div class="row" style="margin-top:30px;margin-bottom:30px;">
+      <div class="d-flex align-items-center col-lg-8">
+        <p>
+          Through the use of Teachable Machine, a web-based tool that trains your computer to recognize sounds and
+          images,
+          “Straight Up” scans the users posture and alerts them if they begin to slouch or fall out of the good posture
+          range. Good posture is a cornerstone of a healthy lifestyle and has numerous long term benefits, such as
+          improved
+          back performance with age and a decrease in overall health issues denoting physical performance. Creating an
+          objective guideline to good posture as well as the correct measurement for bad posture was extremely
+          difficult,
+          but through immense research our team was able to come up with respectable guidelines for correct posture.
+        </p>
+      </div>
+      <div class="d-flex align-items-center col-lg-4">
+        <img class="img-fluid" src="machinelearning.jpg" alt="Machine Learning" style="border-radius:20px">
+      </div>
+    </div>
+    <div style="margin-top:30px;margin-bottom:30px;" class="row">
+      <div class="d-flex align-items-center col-lg-8 order-1 order-lg-2">
+        <p>We
+          chose this overall concept due to the increased use and importance of digital communication in the ongoing
+          pandemic and how users can still stay healthy while working at their keyboards. The website will recommend
+          users
+          the best distance between the screen and user’s eyes for optimal positioning along with a video tracker with
+          alignments to help the user properly orient themselves. We also provided resources at the bottom of the
+          website so
+          users can further educate themselves on the importance of good posture.</p>
+      </div>
+      <div class="d-flex align-items-center col-lg-4 order-2 order-lg-1">
+        <img class="img-fluid" src="socialdistance.jpeg"
+          style="position:relative;transform:translateX(-50%);left:50%;border-radius:20px;">
+      </div>
+    </div>
+    <div style="margin-top:30px;margin-bottom:30px;" class="row">
+      <div class="d-flex align-items-center col-lg-8">
+        <p>Due to the difficulty of coding the
+          teaching machine we are extremely proud of the finished project. Because none of us had collaboratively coded
+          in
+          the past, learning the ins and outs of github was integral in our success. The github workshop, along with the
+          plethora of other workshops throughout the day, were extremely informative, and assisted us throughout the
+          hackathon. Furthermore, using the internet along with intuitive thinking, we were able to learn many new lines
+          of
+          code that will be undoubtedly helpful in our future. In the future we hope to implement an overall report on
+          how
+          good your posture was over the period of time you were on your computer.
+        </p>
+      </div>
+      <div class="d-flex align-items-center col-lg-4">
+        <img class="img-fluid" style="border-radius:20px;position:relative;left:50%;transform: translateX(-50%);"
+          src="onlinelearning.jpeg">
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <div style="background-color: #53354a;">
+    <div style="padding-top:100px;padding-bottom:100px;" id="resources" class="container">
+      <h1 style="color:#fff44f;">Resources</h1>
+      <a
+        href="https://www.osha.gov/SLTC/etools/computerworkstations/components_monitors.html#:~:text=Generally%2C%20the%20preferred%20viewing%20distance,the%20monitor%20(table%20depth)">Computer Workstation Facts (US Department of Labor)</a>
+      <a href="https://teachablemachine.withgoogle.com/">Teachable Machine</a>
+      <a href="https://github.com/Nitrostrider/straighten-up">Github</a>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/pose@0.8/dist/teachablemachine-pose.min.js"></script>
+  <script type="text/javascript">
+    // More API functions here:
+    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
+    let loopstop = false;
+    function loopstopper() {
+      loopstop = true;
+    }
+    function loopstarter() {
+      loopstop = false;
+    }
+
+
+    let alignshow = true;
+    function alignshowtoggle() {
+      var element = document.getElementsByClassName("colorfulBar");
+      if (alignshow == false) {
+        alignshow = true;
+        element[0].classList.add("hidden");
+        element[0].classList.remove("visible");
+        element[1].classList.add("hidden");
+        element[1].classList.remove("visible");
+        element[2].classList.add("hidden");
+        element[2].classList.remove("visible");
+
+      } else {
+        alignshow = false;
+
+        element[0].classList.add("visible");
+        element[0].classList.remove("hidden");
+        element[1].classList.add("visible");
+        element[1].classList.remove("hidden");
+        element[2].classList.add("visible");
+        element[2].classList.remove("hidden");
+      }
+    }
+    // the link to your model provided by Teachable Machine export panel
+    const URL = "/my-pose-model/";
+    let model, webcam, ctx, labelContainer, maxPredictions;
+
+    async function init() {
+      const modelURL = URL + "model.json";
+      const metadataURL = URL + "metadata.json";
+
+
+      // load the model and metadata
+      // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+      // Note: the pose library adds a tmPose object to your window (window.tmPose)
+      model = await tmPose.load(modelURL, metadataURL);
+      maxPredictions = model.getTotalClasses();
+
+      // Convenience function to setup a webcam
+      const size = 200;
+      const flip = true; // whether to flip the webcam
+      webcam = new tmPose.Webcam(size, size, flip); // width, height, flip
+
+      await webcam.setup(); // request access to the webcam
+      await webcam.play();
+      window.requestAnimationFrame(loop);
+
+      // append/get elements to the DOM
+      const canvas = document.getElementById("canvas");
+      canvas.width = size; canvas.height = size;
+      ctx = canvas.getContext("2d");
+      labelContainer = document.getElementById("label-container");
+      for (let i = 0; i < maxPredictions; i++) { // and class labels
+        labelContainer.appendChild(document.createElement("div"));
+      }
+    }
+
+    async function loop(timestamp) {
+      //stoppin condition for this loop with button
+      //if statement with var loopstop = false  
+      if (loopstop == false) {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);//recursively
+      }
+    }
+
+    async function predict() {
+      // Prediction #1: run input through posenet
+      // estimatePose can take in an image, video or canvas html element
+      const { pose, posenetOutput } = await model.estimatePose(webcam.canvas);
+      // Prediction 2: run input through teachable machine classification model
+      const prediction = await model.predict(posenetOutput);
+
+      for (let i = 0; i < 2; i++) {
+        const classPrediction =
+          prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+        //2 decimal places
+        labelContainer.childNodes[i].innerHTML = classPrediction;
+        if (prediction[1].probability.toFixed(2) > 0.9) {
+          var audio = new Audio('siren.ogg');
+          audio.play();
+          console.log(prediction[1].probability.toFixed(2));
+        }
+      }
+
+      // draw the poses
+      drawPose(pose);
+    }
+
+    function drawPose(pose) {
+      if (webcam.canvas) {
+        ctx.drawImage(webcam.canvas, 0, 0);
+        // draw the keypoints and skeleton
+        if (pose && alignshow == false) {
+          const minPartConfidence = 0.5;
+          tmPose.drawKeypoints(pose.keypoints, minPartConfidence, ctx);
+          tmPose.drawSkeleton(pose.keypoints, minPartConfidence, ctx);
+        }
+      }
+    }
+
+    function loudsound() {
+      alert("Hello! Be cautious of the alert sound!")
+    }
+
+  </script>
+  <script type="text/javascript" src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
